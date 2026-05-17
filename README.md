@@ -96,7 +96,6 @@ DayPilot uses virtual scrolling — only visible rows are rendered in the DOM. T
 
 ```
 crm-free-agents/
-├── index.html        # Demo page + drag-to-install bookmarklet
 ├── bookmarklet.js    # The bookmarklet source (minified, ready to use)
 ├── bookmarklet.dev.js # Readable source with comments
 └── README.md
