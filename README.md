@@ -28,7 +28,7 @@ No backend. No API. No installation. Works entirely from the browser session tha
 
 ## Demo
 
-👉 **[Live Demo →](https://YOUR_USERNAME.github.io/crm-free-agents)**
+👉 **[Live Demo →](https://presentation.is-great.net/)**
 
 The demo simulates a DayPilot Scheduler with randomized agent schedules so you can see the bookmarklet in action without access to the actual CRM.
 
