@@ -44,10 +44,6 @@ The demo simulates a DayPilot Scheduler with randomized agent schedules so you c
 4. Navigate to the CRM scheduler page
 5. Click the bookmark — the panel appears instantly
 
-### Or drag this to your bookmarks bar:
-
-Open [`index.html`](https://YOUR_USERNAME.github.io/crm-free-agents) and drag the button directly to your bookmarks bar.
-
 ---
 
 ## How It Works
