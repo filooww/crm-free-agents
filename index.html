@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Free Agents Monitor</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="badge">bookmarklet · vanilla js · zero install</div>
+    <h1>CRM Free Agents<br><span>Monitor</span></h1>
+    <p class="subtitle">One click to categorize every support agent as free, busy, soon-busy, or on break — by parsing a DayPilot Scheduler CRM directly from the DOM.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/filooww/crm-free-agents" class="btn btn-ghost" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+      <button class="btn btn-primary" id="demo-btn">
+        Try the Demo →
+      </button>
+    </div>
+  </div>
+
+  <div class="install-box reveal">
+    <h2>See it live</h2>
+    <p>Click the button below — the floating panel will appear just like it does in the real CRM.</p>
+    <button class="drag-btn" id="try-btn">
+      🟢 Launch Free Agents Monitor
+    </button>
+    <p class="drag-hint">simulated data · randomized every click</p>
+  </div>
+
+  <div class="section reveal" id="demo">
+    <div class="section-label">// interactive demo</div>
+    <h2>See it in action</h2>
+    <p>Simulated DayPilot Scheduler with randomized agent activities. The right side mirrors what the bookmarklet renders over the real CRM. Try the arrow buttons to scroll to a specific agent.</p>
+
+    <div class="demo-wrap">
+      <div class="demo-toolbar">
+        <div class="demo-dots"><span></span><span></span><span></span></div>
+        <div class="demo-url">https://crm.company.local/scheduler</div>
+      </div>
+      <div class="demo-inner">
+        <div class="scheduler-sim" id="scheduler-sim"></div>
+        <div class="panel-sim" id="panel-sim"></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:12px">
+      <button class="btn btn-ghost" id="randomize-btn" style="font-size:12px">
+        ↺ Randomize schedules
+      </button>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="section-label">// categories</div>
+    <h2>Four categories, instantly</h2>
+    <p>Each agent is classified by what's happening at the current red time-line, what's coming up in the next 15 minutes, and the colors of their tasks. Background activity (calls, PC maintenance) doesn't count as busy.</p>
+
+    <div class="categories">
+      <div class="category" style="--c:#a6e3a1">
+        <div class="sym">✓</div>
+        <h4>Free</h4>
+        <p>Available now with no blocking task starting soon.</p>
+      </div>
+      <div class="category" style="--c:#fab387">
+        <div class="sym">◷</div>
+        <h4>Soon busy</h4>
+        <p>Free now, but a blocking task starts within ~15 min.</p>
+      </div>
+      <div class="category" style="--c:#cba6f7">
+        <div class="sym">☕</div>
+        <h4>On break</h4>
+        <p>Break in progress or starting soon, with countdown.</p>
+      </div>
+      <div class="category" style="--c:#f38ba8">
+        <div class="sym">✗</div>
+        <h4>Busy</h4>
+        <p>Actively occupied right now — don't assign new work.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="section-label">// how it works</div>
+    <h2>The approach</h2>
+    <p>Works entirely client-side in the existing authenticated session — bypassing VPN and client-certificate auth complexity. The bookmarklet is read-only and adds only a floating overlay.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01 / SCROLL & COLLECT</div>
+        <h3>Beat virtual scrolling</h3>
+        <p>Programmatically scrolls the DayPilot container in 400px steps, dispatching <code>scroll</code> events so all rows get rendered, then restores the original position.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02 / FIND GROUP</div>
+        <h3>Slice the target group</h3>
+        <p>Finds the support-agents group header and slices rows until the next group, ignoring managers, team leads, and hotline operators.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03 / FILTER SHIFT</div>
+        <h3>Skip non-working agents</h3>
+        <p>Drops anyone with zero events in a ±1 hour window — days off, ended shifts, not started yet.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04 / CLASSIFY EVENTS</div>
+        <h3>Color + width + border</h3>
+        <p>Maps each task block to "busy" or "free" by RGB color. Disambiguates ambiguous colors by block width. Treats the CRM's orange active-border as a secondary signal.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">05 / COMPUTE TIMING</div>
+        <h3>Pixel-accurate countdowns</h3>
+        <p>72px = 1 hour. Distance from the red current-time line gives "starts in ~Xm" or "ends in ~Xm" labels for breaks and incoming tasks.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">06 / SCROLL-TO</div>
+        <h3>Click-to-navigate</h3>
+        <p>The → button on each agent re-uses the same programmatic scrolling to jump the CRM directly to that row and highlight it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="section-label">// source</div>
+    <h2>Vanilla JavaScript, single file</h2>
+    <p>The whole bookmarklet is ~7KB of self-contained vanilla JS. No build step, no dependencies.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-filename">bookmarklet.js</span>
+        <button class="copy-btn" id="copy-btn">Copy bookmarklet</button>
+      </div>
+      <pre><span class="c-comment">// Find the red current-time line</span>
+<span class="c-key">const</span> sep = document.<span class="c-fn">querySelector</span>(<span class="c-str">'.scheduler_default_separator'</span>);
+<span class="c-key">const</span> nowPx = <span class="c-fn">parseInt</span>(sep.style.left);
+
+<span class="c-comment">// For each event, classify by color (with width disambiguation)</span>
+<span class="c-key">function</span> <span class="c-fn">classifyEvent</span>(color, width) {
+  <span class="c-key">if</span> (color === BREAK_COLOR) <span class="c-key">return</span> <span class="c-str">'break'</span>;
+  <span class="c-key">if</span> (BUSY_COLORS.<span class="c-fn">includes</span>(color)) <span class="c-key">return</span> <span class="c-str">'busy'</span>;
+  <span class="c-comment">// Navy = PC maintenance (free) if wide, hotline (busy) if narrow</span>
+  <span class="c-key">if</span> (color === NAVY) <span class="c-key">return</span> width &lt;= <span class="c-val">50</span> ? <span class="c-str">'busy'</span> : <span class="c-key">null</span>;
+  <span class="c-key">return</span> <span class="c-key">null</span>;
+}
+
+<span class="c-comment">// Scroll the virtual list to render all rows</span>
+<span class="c-key">for</span> (<span class="c-key">let</span> pos = <span class="c-val">0</span>; pos &lt;= maxScroll; pos += <span class="c-val">400</span>) {
+  rowHeaderScroll.scrollTop = pos;
+  rowHeaderScroll.<span class="c-fn">dispatchEvent</span>(<span class="c-key">new</span> <span class="c-fn">Event</span>(<span class="c-str">'scroll'</span>, { bubbles: <span class="c-key">true</span> }));
+  <span class="c-key">await</span> <span class="c-key">new</span> <span class="c-fn">Promise</span>(r => <span class="c-fn">setTimeout</span>(r, <span class="c-val">400</span>));
+  <span class="c-comment">// ... collect rows + events visible at this scroll position</span>
+}</pre>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Vanilla JS</span>
+      <span class="tag">DOM API</span>
+      <span class="tag">Virtual Scroll Handling</span>
+      <span class="tag">DayPilot Scheduler</span>
+      <span class="tag">Browser Bookmarklet</span>
+      <span class="tag">Zero Dependencies</span>
+      <span class="tag">Firefox + Chrome</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    Built with vanilla JS · <a href="https://github.com/filooww/crm-free-agents" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
