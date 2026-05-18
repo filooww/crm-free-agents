@@ -4,7 +4,7 @@ A browser bookmarklet that parses a DayPilot Scheduler-based support CRM in real
 
 **Built for:** Internal support team dispatchers who previously had to manually scroll through 40+ agent dashboards to figure out who's available right now.
 
-**[Live Demo →](https://filooww.github.io/crm-free-agents)**
+**[Live Demo →](https://presentation.web1337.net/)**
 
 ---
 
@@ -69,7 +69,7 @@ The CRM legend has 17 task types. They classify as:
 Two ways to install:
 
 ### A. Drag-to-install (recommended)
-1. Open the [demo page](https://filooww.github.io/crm-free-agents)
+1. Open the [demo page](https://presentation.web1337.net/)
 2. Drag the **🟢 Free Agents Monitor** button to your bookmarks bar
 3. Open the CRM scheduler page and click the bookmark
 
