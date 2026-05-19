@@ -23,11 +23,11 @@ One bookmarklet click produces a floating panel that categorizes every active ag
 
 | Priority | Status | Label | Meaning |
 |----------|--------|-------|---------|
-| 1 | ✓ | **Свободны** | Available right now |
-| 2 | ↗ | **Скоро свободны** | Busy now, but freeing up in ≤15 min |
-| 3 | ◷ | **Скоро заняты** | Free now, blocking task in ≤15 min |
-| 4 | ☕ | **Перерыв** | On break now or break starting in ≤15 min |
-| 5 | ✗ | **Заняты** | Actively occupied right now |
+| 1 | ✅ | **Свободны** | Available right now |
+| 2 | ⏳ | **Скоро свободны** | Busy now, but freeing up in ≤15 min |
+| 3 | 🕒 | **Скоро заняты** | Free now, blocking task in ≤15 min |
+| 4 | ☕  | **Перерыв** | On break now or break starting in ≤15 min |
+| 5 | ❌ | **Заняты** | Actively occupied right now |
 
 Each agent has a **→** button that scrolls the CRM directly to their row and highlights it. The panel auto-refreshes every 2 minutes. The **↺ Обновить** button re-scans immediately.
 
