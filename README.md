@@ -2,7 +2,7 @@
 
 A browser bookmarklet that instantly categorizes all support agents in a DayPilot Scheduler CRM — no backend, no API, no installation required.
 
-**[Live Demo & Install →](https://filooww.github.io/crm-free-agents)**
+**[Live Demo & Install →](https://presentation.web1337.net/)**
 
 ---
 
@@ -35,7 +35,7 @@ Each agent has a **→** button that scrolls the CRM directly to their row and h
 ## Install
 
 ### Drag to bookmarks bar (recommended)
-1. Open the [demo page](https://filooww.github.io/crm-free-agents)
+1. Open the [demo page](https://presentation.web1337.net/)
 2. Drag the **🟢 Free Agents Monitor** button to your bookmarks bar
 3. Open the CRM and click the bookmark
 
