@@ -111,19 +111,8 @@ The **→** button re-uses the same programmatic scroll logic to jump the CRM to
 
 ```
 crm-free-agents/
-├── index.html              # GitHub Pages demo & install page
 ├── bookmarklet.js          # Production bookmarklet (paste as bookmark URL)
-├── README.md
-└── assets/
-    ├── css/
-    │   ├── base.css
-    │   ├── layout.css
-    │   ├── components.css
-    │   ├── demo.css
-    │   └── animations.css
-    └── js/
-        ├── demo.js         # Scheduler simulator with randomized agents
-        └── panel.js        # Floating panel demo overlay
+└── README.md
 ```
 
 ---
